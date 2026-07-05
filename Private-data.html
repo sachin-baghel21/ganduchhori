@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Display Data</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-r from-indigo-100 via-pink-100 to-purple-100 min-h-screen lg:p-3 md:p-6 sm:p-2">
+
+  <div class="md:max-w-6xl mx-auto">
+
+    <div class="bg-white shadow-2xl overflow-hidden">
+
+      <div class="bg-indigo-600 text-white text-center py-6">
+        <h1 class="sm:text-xl lg:text-2xl font-bold">Submitted Form Data</h1>
+      </div>
+
+      <div class="overflow-x-auto">
+
+        <table class="w-full text-left border-collapse text-sm">
+
+          <thead class="bg-indigo-100">
+            <tr>
+              <th class="p-4 text-sm md:text-lg font-bold">Field</th>
+              <th class="p-4 text-sm md:text-lg font-bold">Value</th>
+            </tr>
+          </thead>
+
+          <tbody id="tableBody" class="divide-y divide-gray-200">
+          </tbody>
+
+        </table>
+
+      </div>
+
+      <div class="text-center py-8">
+        <a href="Private-Qes.html"
+          class="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3 rounded-xl font-semibold">
+          Back To Form
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    const data = JSON.parse(localStorage.getItem("userData"));
+
+    const tableBody = document.getElementById("tableBody");
+
+    for (let key in data) {
+
+      const row = `
+        <tr class="hover:bg-gray-50 transition">
+
+          <td class="p-4 font-semibold capitalize">
+            ${key}
+          </td>
+
+          <td class="p-4 text-gray-700">
+            ${data[key]}
+          </td>
+
+        </tr>
+      `;
+
+      tableBody.innerHTML += row;
+    }
+
+  </script>
+
+</body>
+</html>
